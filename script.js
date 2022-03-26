@@ -1,9 +1,9 @@
 var player_score = 0;
 var computer_score = 0;
-let round_flag = false;
-no_of_rounds = 5;
+let flag = true;
 
 var choices = ['rock','paper','scissors'];
+var player_choice;
 
 
 const options = document.querySelector('.options');
@@ -13,7 +13,11 @@ const sbtn = options.childNodes[5];
 
 
 
-play(no_of_rounds);
+
+
+
+
+
 
 
 function computer_play(){
@@ -29,26 +33,16 @@ function computer_play(){
 
 
 
-function play(no_of_rounds){
+function play(player_choice){
 
-    for(let i = 0;i<no_of_rounds;i++){
         let computer_choice = computer_play();
-        let player_choice = prompt('Enter your choice : ').toLowerCase();
         console.log(`Player chose ${player_choice}\nComputer chose ${computer_choice}`);
-        round(player_choice,computer_choice);
+        round(computer_choice,player_choice);
         console.log(`Your score ${player_score}\nComputer's score ${computer_score}`);
+        
     }
 
-    if(player_score>computer_score){
-        console.log('You won!');
-    }
-    else if(player_score<computer_score){
-        console.log('Computer won!');
-    }
-    else{
-        console.log('No one won');
-    }
-}
+   
 
 function round(computer_selection, player_selection){
     if (computer_selection === "rock"){
@@ -77,7 +71,7 @@ function round(computer_selection, player_selection){
             console.log('Tie!');
         }
     }
-    else if(player_selection === "scissors"){
+    else if(computer_selection === "scissors"){
         if (player_selection === "paper"){
             console.log('You Lose! Scissor beats Paper.');
             computer_score+=1;
@@ -91,9 +85,40 @@ function round(computer_selection, player_selection){
         }
     }
 
-    else{
-        console.log('Invalid Input')
+    if(computer_score == 5||player_score == 5){
+        if(player_score>computer_score){
+            console.log('You won!');
+        }
+        else if(player_score<computer_score){
+            console.log('Computer won!');
+        }
+        else{
+            console.log('No one won');
+        }
     }
 
+    
+
 }
+
+
+
+
+rbtn.addEventListener('click',() =>{
+    player_choice = "rock";
+    play(player_choice);
+});
+pbtn.addEventListener('click',() =>{
+    player_choice = "paper";
+    play(player_choice);
+});
+sbtn.addEventListener('click',() =>{
+    player_choice = "scissors";
+    play(player_choice);
+});
+
+
+
+
+
 
