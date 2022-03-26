@@ -13,18 +13,9 @@ const sbtn = options.childNodes[5];
 
 
 
-
-
-
-
-
-
-
 function computer_play(){
     let random = Math.random()*choices.length | 0;
-
     let computer_choice = choices[random];
-
     return computer_choice
 
 }
@@ -34,66 +25,71 @@ function computer_play(){
 
 
 function play(player_choice){
-
-        let computer_choice = computer_play();
-        console.log(`Player chose ${player_choice}\nComputer chose ${computer_choice}`);
+    
+        var computer_choice = computer_play();
         round(computer_choice,player_choice);
-        console.log(`Your score ${player_score}\nComputer's score ${computer_score}`);
-        
+        y_score = document.querySelector('#y_score');
+        c_score = document.querySelector('#c_score');
+        y_score.textContent = player_score;
+        c_score.textContent = computer_score;
+
     }
 
    
 
 function round(computer_selection, player_selection){
+
+    result = document.querySelector('#result');
+
     if (computer_selection === "rock"){
         if (player_selection === "scissors"){
-            console.log('You Lose! Rock beats Scissors.');
+            result.textContent = 'Computer chose rock...You Lose! Rock beats Scissors.';
             computer_score+=1;
         }
         else if(player_selection === "paper"){
-            console.log('You Won! Paper beats Rock.');
+            result.textContent = 'Computer chose rock...You Won! Paper beats Rock.';
             player_score+=1;
         }
         else{
-            console.log('Tie!');
+            result.textContent = 'Computer chose rock...Tie!';
         }
     }
     else if (computer_selection === "paper"){
         if (player_selection === "rock"){
-            console.log('You Lose! Paper beats Rock.');
+            result.textContent = 'Computer chose paper...You Lose! Paper beats Rock.';
             computer_score+=1;
         }
         else if(player_selection === "scissors"){
-            console.log('You Won! Scissors beats Paper.');
+            result.textContent = 'Computer chose paper...You Won! Scissors beats Paper.';
             player_score+=1;
         }
         else{
-            console.log('Tie!');
+            result.textContent = 'Computer chose paper...Tie!';
         }
     }
     else if(computer_selection === "scissors"){
         if (player_selection === "paper"){
-            console.log('You Lose! Scissor beats Paper.');
+            result.textContent = 'Computer chose scissors...You Lose! Scissor beats Paper.';
             computer_score+=1;
         }
         else if(player_selection === "rock"){
-            console.log('You Won! Rock beats Scissors.');
+            result.textContent = 'Computer chose scissors...You Won! Rock beats Scissors.';
             player_score+=1;
         }
         else{
-            console.log('Tie!');
+            result.textContent = 'Computer chose scissors...Tie!';
         }
     }
 
     if(computer_score == 5||player_score == 5){
         if(player_score>computer_score){
-            console.log('You won!');
+            result.textContent = 'You won!';
         }
         else if(player_score<computer_score){
-            console.log('Computer won!');
+            result.textContent = 'Computer won!';
         }
         else{
-            console.log('No one won');
+            result.textContent = 'No one won';
         }
     }
 
@@ -106,15 +102,21 @@ function round(computer_selection, player_selection){
 
 rbtn.addEventListener('click',() =>{
     player_choice = "rock";
-    play(player_choice);
+    if(player_score< 5 && computer_score< 5){
+        play(player_choice);    
+    }
 });
 pbtn.addEventListener('click',() =>{
     player_choice = "paper";
-    play(player_choice);
+    if(player_score< 5 && computer_score< 5){
+        play(player_choice);    
+    }
 });
 sbtn.addEventListener('click',() =>{
     player_choice = "scissors";
-    play(player_choice);
+    if(player_score< 5 && computer_score< 5){
+        play(player_choice);    
+    }
 });
 
 
