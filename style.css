@@ -1,0 +1,36 @@
+
+.container > *{
+    border:black solid;
+}
+
+.container{
+    display:flex;
+    flex-direction: column;
+}
+
+.heading{
+    display:flex;
+    justify-content: center;
+    padding:100px;
+    font-size: xx-large;
+}
+
+.options,.score{
+    display:flex;
+    justify-content: center;
+    padding:80px;
+    gap : 100px;
+    font-size:larger;
+}
+.result{
+    display:flex;
+    justify-content: center;
+    padding: 20px;
+}
+ button{
+    padding:50px;
+    font-size:larger;
+ }
+
+ 
+

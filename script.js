@@ -1,19 +1,15 @@
 var player_score = 0;
 var computer_score = 0;
 let round_flag = false;
-
-
-while(round_flag === false){
-    var no_of_rounds = prompt('Enter number of rounds : ').toLowerCase();
-    if (isNaN(no_of_rounds)!= false){
-        console.log('Enter valid number')
-    }
-    else{
-        round_flag = true;
-    }
-}
+no_of_rounds = 5;
 
 var choices = ['rock','paper','scissors'];
+
+
+const options = document.querySelector('.options');
+const rbtn = options.childNodes[1];
+const pbtn = options.childNodes[3];
+const sbtn = options.childNodes[5];
 
 
 
@@ -23,7 +19,7 @@ play(no_of_rounds);
 function computer_play(){
     let random = Math.random()*choices.length | 0;
 
-    let computer_choice = choices[random]
+    let computer_choice = choices[random];
 
     return computer_choice
 
@@ -34,6 +30,7 @@ function computer_play(){
 
 
 function play(no_of_rounds){
+
     for(let i = 0;i<no_of_rounds;i++){
         let computer_choice = computer_play();
         let player_choice = prompt('Enter your choice : ').toLowerCase();
@@ -99,3 +96,4 @@ function round(computer_selection, player_selection){
     }
 
 }
+
