@@ -38,7 +38,7 @@ function play(no_of_rounds){
         let computer_choice = computer_play();
         let player_choice = prompt('Enter your choice : ').toLowerCase();
         console.log(`Player chose ${player_choice}\nComputer chose ${computer_choice}`);
-        round(player_choice,computer_choice);
+        round(computer_choice,player_choice);
         console.log(`Your score ${player_score}\nComputer's score ${computer_score}`);
     }
 
@@ -80,7 +80,7 @@ function round(computer_selection, player_selection){
             console.log('Tie!');
         }
     }
-    else if(player_selection === "scissors"){
+    else if(computer_selection === "scissors"){
         if (player_selection === "paper"){
             console.log('You Lose! Scissor beats Paper.');
             computer_score+=1;
