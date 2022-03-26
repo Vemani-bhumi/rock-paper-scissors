@@ -21,9 +21,6 @@ function computer_play(){
 }
 
 
-
-
-
 function play(player_choice){
     
         var computer_choice = computer_play();
